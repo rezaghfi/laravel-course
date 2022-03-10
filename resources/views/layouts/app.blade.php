@@ -7,6 +7,12 @@
   <title>Document</title>
 </head>
 <body>
-  <h1>Hello id in PostsControllers is: {{$id}}</h1>
+  <div class="container" dir="rtl">
+    @yield('content')
+  </div>
+
+  <footer>
+    b.@yield('footer')
+  </footer>
 </body>
 </html>
