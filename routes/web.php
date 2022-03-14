@@ -1,7 +1,9 @@
 <?php
 
-use App\Http\Controllers\PostsController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,17 +15,33 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('hello', function (){
+    return "hello my friends";
+});
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/post/{id}', function($id){
-    $x = "hello" . $id;
+Route::get('/goodbye/{name?}', function ($name=null) {
+    $x = "Good Bye " . $name;
     return $x;
 });
 
 
-Route::get("index", [PostsController::class, 'index']);
-Route::get("reza", 'App\Http\Controllers\PostsController@reza');
-Route::get("show/{id}", [PostsController::class, 'showMyView']);
+Route::view('/myView','pages.myView');
+
+Route::prefix('prefix')->group(function (){
+    Route::get('example1',function (){
+       return "صفحه فرضی اول";
+    });
+    Route::get('example2',function (){
+       return "صفحه فرضی دوم";
+    });
+});
+
+Route::get('/users',[UserController::class,'index']);
+Route::post('users',[UserController::class, 'create']);
+Route::get("show/{id}", [UserController::class, 'showID']);
+
+Route::resource('posts', PostController::class);
 

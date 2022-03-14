@@ -4,15 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>laravel-course</title>
 </head>
-<body>
-  <div class="container" dir="rtl">
+<body  dir="rtl">
+  <div class="container">
     @yield('content')
   </div>
 
   <footer>
-    b.@yield('footer')
+    @yield('footer')
   </footer>
 </body>
 </html>
